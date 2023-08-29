@@ -14,8 +14,10 @@ fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=fa
 .catch(err => console.error(err));
 
 buildGrild = (data) => {
+    document.querySelector(".lds-ring").classList.remove(".lds-ring");
     const grid = document.querySelector('.grid');
     grid.innerHTML = '';
+    
     data.forEach(element => {
         const div = document.createElement("div");
 
