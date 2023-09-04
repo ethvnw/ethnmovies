@@ -14,6 +14,7 @@ fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=fa
 .catch(err => console.error(err));
 
 buildGrild = (data) => {
+    console.log(data);
     document.querySelector(".lds-ring").classList.remove(".lds-ring");
     const grid = document.querySelector('.grid');
     grid.innerHTML = '';
@@ -22,7 +23,10 @@ buildGrild = (data) => {
         const div = document.createElement("div");
 
         const link = document.createElement('a');
-        link.href = `./watch.html?id=${element.id}&type=${element.media_type}`;
+        if (element.media_type === 'movie') 
+          link.href = `./watch.html?id=${element.id}&type=${element.media_type}`;
+        else      
+          link.href = `./watch.html?id=${element.id}&type=${element.media_type}&sea=1&ep=1`;
 
         const img = document.createElement('img');
         img.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`;

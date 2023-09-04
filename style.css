@@ -51,6 +51,33 @@ header {
     width: 20rem;
 }
 
+#name {
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+
+.dropdowns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    font-weight: bold;
+}
+
+.dropdowns select {
+    padding: 0.5rem 1rem;
+}
+
+.button {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: rgb(176, 77, 64);
+}
+
+.button:hover {
+  background-color: rgb(132, 53, 43);
+}
 
 .video {
     padding-inline: 10rem;
@@ -65,7 +92,6 @@ iframe {
     aspect-ratio: 16/9;
     border: none;
 }
-
 
 
 
