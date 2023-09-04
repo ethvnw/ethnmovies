@@ -64,6 +64,7 @@ if (type ==="movie") {
 }
 
 updateEpLink = () => {
+    console.log("run");
     var season = document.getElementById("season").value;
     var episode = document.getElementById("episode").value;
     var button = document.getElementById("watch");
@@ -72,7 +73,7 @@ updateEpLink = () => {
 
 
 var episodeDrop = document.getElementById("episode");
-episodeDrop.addEventListener("change", updateEpLink());
+episodeDrop.addEventListener("change", updateEpLink);
 
 const video = document.querySelector('.video');
 const player = document.createElement('iframe');
