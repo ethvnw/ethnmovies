@@ -37,6 +37,10 @@ if (type ==="movie") {
             option.text = i;
             option.value = i;
             seasonDrop.appendChild(option);
+
+            if (i == sea) {
+                seasonDrop.selectedIndex = i - 1;
+            }   
         }   
         updateDropdown();
     };
@@ -55,16 +59,40 @@ if (type ==="movie") {
             option.text = j;
             option.value = j;
             episodeDrop.appendChild(option);
+
+            if (j == ep) {
+                episodeDrop.selectedIndex = j - 1;
+            }
         }
         updateEpLink();
-    };
+        updateNextEp();
 
+    };
+    
     const season = document.getElementById("season");
     season.addEventListener("change", updateDropdown);
+    
 }
 
+updateNextEp = () => {
+    var dropdowns = document.getElementById("dropdowns");
+    if (ep < seasonDetails.seasons[sea].episode_count && document.getElementsByClassName("nextBtn").length === 0) {
+        var next = document.createElement("a");
+        next.classList.add("button", "nextBtn");
+        next.href = `./watch.html?id=${id}&type=${type}&sea=${sea}&ep=${parseInt(ep) + 1}`;
+        next.innerText = "Next Episode";
+        dropdowns.appendChild(next);
+
+    } else if (sea < seasonDetails.number_of_seasons && document.getElementsByClassName("nextBtn").length === 0) {
+        var next = document.createElement("a");
+        next.classList.add("button", "nextBtn");
+        next.href = `./watch.html?id=${id}&type=${type}&sea=${parseInt(sea) + 1}&ep=1`;
+        next.innerText = "Next Season";
+        dropdowns.appendChild(next);
+    };
+};
+
 updateEpLink = () => {
-    console.log("run");
     var season = document.getElementById("season").value;
     var episode = document.getElementById("episode").value;
     var button = document.getElementById("watch");
