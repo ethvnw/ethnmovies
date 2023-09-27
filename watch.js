@@ -15,7 +15,7 @@ var seasonDetails;
 var nameBar = document.getElementById("name");
 fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
 .then(response => response.json())
-.then(response => nameBar.innerText += response.title || response.name)
+.then(response => nameBar.innerText += `${response.title} (${response.release_date.slice(0,4)})` || response.name)
 .catch(err => console.error(err));
 
 

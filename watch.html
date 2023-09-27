@@ -9,16 +9,17 @@
 </head>
 <body>
     <header>
-        <a class="logo" href="./"><h1>ethanw.online</h1></a>
+        <h1><a class="logo" href="./">ethanw.online</a></h1>
     </header>
 
     <section class="searchbar">
         <form id="search" action="./query.html">
             <input type="text" placeholder="Search for a movie or show" name="name">
             <button class="submit" type="submit">Search</button>
+            <a id="randomBtn" class="button">Random Movie</a>
         </form>
     </section>
-
+   
     <h1 id="name"></h1>
     <section id="dropdowns" class="dropdowns">
         <label for="season">Season</label>
@@ -28,8 +29,6 @@
         <label for="episode">Episode</label>
         <select name="episode" id="episode">
         </select>
-
-        <a class="button" href="" id="watch">Go</a>
     </section>
 
     <div class="video">
@@ -37,5 +36,6 @@
     </div>
     
     <script src="watch.js"></script>
+    <script src="random.js"></script>
 </body>
 </html>

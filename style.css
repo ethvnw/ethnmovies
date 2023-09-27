@@ -3,6 +3,7 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    font-size: 1rem;
 }
 
 body {
@@ -16,9 +17,11 @@ header {
     text-align: center;
 }
 
+
 .logo {
     color: white;
     text-decoration: none;
+    font-size: 2rem;
 }
 
 .logo:hover {
@@ -34,7 +37,7 @@ header {
 
 #search input {
     background-color: rgb(207, 207, 207);
-    width: 80vw;
+    width: 70vw;
     border-style: solid;
     border-radius: 3px;
     padding: 1rem;
@@ -87,14 +90,21 @@ header {
   padding: 0.5rem 1rem;
   color: white;
   background-color: rgb(176, 77, 64);
+  border-radius: 3px;
+  font-weight: bold;
 }
 
 .button:hover {
   background-color: rgb(132, 53, 43);
+  cursor: pointer;
+}
+
+#name {
+  font-size: 1.5rem;
 }
 
 .video {
-    padding-inline: 10rem;
+    padding-inline: 1rem;
     padding-block: 2rem;
     height: auto;
     display: flex;
@@ -102,11 +112,16 @@ header {
 }
 
 iframe {
-    height: 96vh;
-    aspect-ratio: 16/9;
-    border: none;
+  width: 80vw;
+  aspect-ratio: 16/9;
+  border: none;
 }
 
+
+#randomBtn {
+  display: inline-block;
+  padding: 1rem;
+}
 
 
 .lds-ring {
