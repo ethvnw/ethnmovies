@@ -1,11 +1,3 @@
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjQyZDUzZWE3ODU2MjlkZDljNWQ3MzE2MDczYTc2MyIsInN1YiI6IjY0ZTdhZWJlMDZmOTg0MDBjYTU0ZGY5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6-Fwa8nHbJ3KS7PPwcZzZIHfERO0rpPKxKR30L7fcxs'
-    }
-  };
-
 const query = new URLSearchParams(window.location.search).get('name');
 
 fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1`, options)

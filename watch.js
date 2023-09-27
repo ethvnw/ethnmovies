@@ -2,25 +2,24 @@ const id = new URLSearchParams(window.location.search).get('id');
 const type = new URLSearchParams(window.location.search).get('type');
 const sea = new URLSearchParams(window.location.search).get('sea');
 const ep = new URLSearchParams(window.location.search).get('ep');
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MjQyZDUzZWE3ODU2MjlkZDljNWQ3MzE2MDczYTc2MyIsInN1YiI6IjY0ZTdhZWJlMDZmOTg0MDBjYTU0ZGY5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6-Fwa8nHbJ3KS7PPwcZzZIHfERO0rpPKxKR30L7fcxs'
-    }
-  };
 
 var seasonDetails;
 
 var nameBar = document.getElementById("name");
 fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
 .then(response => response.json())
-.then(response => nameBar.innerText += `${response.title} (${response.release_date.slice(0,4)})` || response.name)
+.then(response => {
+    if (type === "movie") {
+        nameBar.innerText += `${response.title} (${response.release_date.slice(0,4)})`;
+    } else {
+        nameBar.innerText += ` ${response.name}`;
+    }
+})
 .catch(err => console.error(err));
 
 
 
-if (type ==="movie") {
+if (type === "movie") {
     document.getElementById("dropdowns").style.display = "none";
 } else {
     nameBar.innerText += `Season ${sea}, Episode ${ep}: `;
