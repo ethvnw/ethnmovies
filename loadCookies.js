@@ -24,6 +24,7 @@ async function getDetails(id, type, season, episode) {
 }
 
 getAllDetails = async () => {
+    console.log('cookies');
     console.log(cookies);
     for (var cookie of cookies) {
         cookie = cookie.trim();
