@@ -56,6 +56,28 @@ header {
   cursor: pointer;
 }
 
+h1 { 
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cookie-grid {
+  padding: 3rem 5rem;
+}
+
+.current-grid, .history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 15rem);
+  grid-gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cookie-grid img {
+  width: 15rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
 .grid {
     justify-content: center;
     padding: 2rem;
@@ -97,6 +119,10 @@ header {
 .button:hover {
   background-color: rgb(132, 53, 43);
   cursor: pointer;
+}
+
+.remove-button {
+  margin-top: 0.5rem;
 }
 
 #name {

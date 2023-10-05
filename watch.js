@@ -19,59 +19,45 @@ fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
 
 
 
-if (type === "movie") {
-    document.getElementById("dropdowns").style.display = "none";
-} else {
-    nameBar.innerText += `Season ${sea}, Episode ${ep}: `;
-    fetch(`https://api.themoviedb.org/3/tv/${id}`, options)
-    .then(response => response.json())
-    .then(response => getSeas(response))
-    .catch(err => console.error(err));
-
-    getSeas = (data) => {
-        seasonDetails = data;
-        var seasonDrop = document.getElementById("season");
-        for (var i = 1; i <= data.number_of_seasons; i++) {
-            var option = document.createElement("option");
-            option.text = i;
-            option.value = i;
-            seasonDrop.appendChild(option);
-
-            if (i == sea) {
-                seasonDrop.selectedIndex = i - 1;
-            }   
+getSeas = (data) => {
+    seasonDetails = data;
+    var seasonDrop = document.getElementById("season");
+    for (var i = 1; i <= data.number_of_seasons; i++) {
+        var option = document.createElement("option");
+        option.text = i;
+        option.value = i;
+        seasonDrop.appendChild(option);
+        
+        if (i == sea) {
+            seasonDrop.selectedIndex = i - 1;
         }   
-        updateDropdown();
-    };
+    }   
+    updateDropdown();
+};
 
-    updateDropdown = () => {
-        var episodeDrop = document.getElementById("episode");
-        var seasonDrop = document.getElementById("season");
-        
-        var i, L = episodeDrop.options.length - 1;
-        for(i = L; i >= 0; i--) {
+updateDropdown = () => {
+    var episodeDrop = document.getElementById("episode");
+    var seasonDrop = document.getElementById("season");
+    
+    var i, L = episodeDrop.options.length - 1;
+    for(i = L; i >= 0; i--) {
         episodeDrop.remove(i);
-        }
+    }
+    
+    for (var j = 1; j <= seasonDetails.seasons[seasonDrop.value].episode_count; j++) {
+        var option = document.createElement("option");
+        option.text = j;
+        option.value = j;
+        episodeDrop.appendChild(option);
         
-        for (var j = 1; j <= seasonDetails.seasons[seasonDrop.value].episode_count; j++) {
-            var option = document.createElement("option");
-            option.text = j;
-            option.value = j;
-            episodeDrop.appendChild(option);
-
-            if (j == ep) {
-                episodeDrop.selectedIndex = j - 1;
-            }
+        if (j == ep) {
+            episodeDrop.selectedIndex = j - 1;
         }
-        updateEpLink();
-        updateNextEp();
-
-    };
+    }
+    updateEpLink();
+    updateNextEp();
     
-    const season = document.getElementById("season");
-    season.addEventListener("change", updateDropdown);
-    
-}
+};
 
 updateNextEp = () => {
     var dropdowns = document.getElementById("dropdowns");
@@ -81,7 +67,7 @@ updateNextEp = () => {
         next.href = `./watch.html?id=${id}&type=${type}&sea=${sea}&ep=${parseInt(ep) + 1}`;
         next.innerText = "Next Episode";
         dropdowns.appendChild(next);
-
+        
     } else if (sea < seasonDetails.number_of_seasons && document.getElementsByClassName("nextBtn").length === 0) {
         var next = document.createElement("a");
         next.classList.add("button", "nextBtn");
@@ -99,6 +85,20 @@ updateEpLink = () => {
 };
 
 
+if (type === "movie") {
+    document.getElementById("dropdowns").style.display = "none";
+} else {
+    nameBar.innerText += `Season ${sea}, Episode ${ep}: `;
+    fetch(`https://api.themoviedb.org/3/tv/${id}`, options)
+    .then(response => response.json())
+    .then(response => getSeas(response))
+    .catch(err => console.error(err));
+    
+    const season = document.getElementById("season");
+    season.addEventListener("change", updateDropdown);
+    
+}
+
 var episodeDrop = document.getElementById("episode");
 episodeDrop.addEventListener("change", updateEpLink);
 
@@ -106,5 +106,6 @@ const video = document.querySelector('.video');
 const player = document.createElement('iframe');
 player.src = `https://vidsrc.me/embed/${type}?tmdb=${id}&season=${sea}&episode=${ep}`;
 player.allowFullscreen = true;
-
 video.appendChild(player);
+
+document.cookie = `${id}=${type},${sea},${ep}; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/`;
