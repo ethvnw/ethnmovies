@@ -24,8 +24,6 @@ async function getDetails(id, type, season, episode) {
 }
 
 getAllDetails = async () => {
-    console.log('cookies');
-    console.log(cookies);
     for (var cookie of cookies) {
         cookie = cookie.trim();
         var attributes = cookie.split('=');
@@ -45,7 +43,7 @@ getAllDetails = async () => {
 
 
 buildCurrentGrid = () => {
-    const grid = document.querySelector('.current-grid');
+    const grid = document.querySelector('#current');
     grid.innerHTML = '';
 
     currentArray.forEach(element => {
@@ -59,7 +57,7 @@ buildCurrentGrid = () => {
         img.alt = element.title;
 
         const title = document.createElement('h3');
-        title.innerText = `${element.title}, Season ${element.season}, Episode ${element.episode}`;
+        title.innerText = `${element.title} - Season ${element.season}, Episode ${element.episode}`;
 
         const remove = document.createElement('button');
         remove.innerText = 'Remove';
@@ -78,7 +76,7 @@ buildCurrentGrid = () => {
 }
 
 buildHistoryGrid = () => {
-    const grid = document.querySelector('.history-grid');
+    const grid = document.querySelector('#history');
     grid.innerHTML = '';
 
     historyArray.forEach(element => {

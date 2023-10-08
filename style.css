@@ -1,15 +1,24 @@
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-size: 1rem;
+@import "normalise.css";
+
+:root {
+    --bg-colour: hsl(0, 0%, 10%);
+    --bg-colour-card: hsl(0, 0%, 12%);
+
+    --font-colour-main: hsl(0, 0%, 85%);
+    --font-colour-light: hsl(0, 0%, 95%);
+    --font-colour-dark: hsl(0, 0%, 10%);
+
+    --font-colour-accent: hsl(10, 55%, 45%);
+    --font-colour-accent-dark: hsl(10, 55%, 35%);
+
+    --input-bg-colour: hsl(0, 0%, 80%);
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: var(--bg-colour);
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--font-colour-main);
+    padding-inline: 8rem;
 }
 
 header {
@@ -17,78 +26,115 @@ header {
     text-align: center;
 }
 
-
-.logo {
-    color: white;
+a {
+    color: var(--font-colour-main);
     text-decoration: none;
-    font-size: 2rem;
 }
 
-.logo:hover {
-    color: rgb(176, 77, 64);
+a:hover {
+    color: var(--font-colour-accent);
+    text-decoration: underline;
 }
+
+input, button, .button {
+    background-color: var(--input-bg-colour);
+    padding: 0.8rem;
+    border: 0;
+    border-radius: 3px;
+    margin: 0.2rem;
+    color: var(--font-colour-main);
+}
+
+input { 
+    color: var(--font-colour-dark)
+}
+
+button, .button {
+    background-color: var(--font-colour-accent);
+    color: var(--font-colour-light);
+    font-weight: 550;
+}
+
+button:hover, .button:hover {
+    cursor: pointer;
+    background-color: var(--font-colour-accent-dark);
+    color: var(--font-colour-light);
+    text-decoration: none;
+}
+
+
+/* 
+    Index
+ */
 
 .searchbar {
-    width: 100%;
-    padding: 3rem;
+    margin-bottom: 4rem;
+}
+
+#search {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+#search button, #search a {
+    flex: auto;
 }
 
 #search input {
-    background-color: rgb(207, 207, 207);
-    width: 70vw;
-    border-style: solid;
-    border-radius: 3px;
-    padding: 1rem;
+    width: 85%
 }
 
-.submit { 
-  padding: 1rem;
-  background-color:rgb(176, 77, 64);
-  border-radius: 3px;
-  color: #fff;
-  font-weight: bold;
+#letterboxd-search input {
+    width: 20rem;
 }
 
-.submit:hover {
-  background-color: rgb(132, 53, 43);
-  cursor: pointer;
+#current, #history {
+    justify-content: unset;
 }
 
-h1 { 
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+#current div, #history div {
+    position: relative;
 }
 
-.cookie-grid {
-  padding: 3rem 5rem;
+#current img, #history img {
+    max-height: 65%;
 }
 
-.current-grid, .history-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 15rem);
-  grid-gap: 1.5rem;
-  margin-bottom: 2rem;
+.remove-button {
+    position: absolute;
+    bottom: 0;
 }
 
-.cookie-grid img {
-  width: 15rem;
-  margin-bottom: 1rem;
-  object-fit: cover;
-}
+
+/* 
+    Query
+*/
 
 .grid {
-    justify-content: center;
-    padding: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20rem);
-    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    gap: 2rem;
+    justify-content: center;
 }
 
 .grid img {
-    width: 20rem;
+    width: 100%;
+    max-height: 100%;
 }
+
+.grid div img:hover {
+    opacity: 0.5;
+}
+
+.grid div h3 {
+    padding-inline: 0.5rem;
+}
+
+
+/* 
+    Watch
+*/
 
 #name {
     text-align: center;
@@ -98,65 +144,44 @@ h1 {
 .dropdowns {
     display: flex;
     justify-content: center;
-    gap: 1rem;
     align-items: center;
-    font-weight: bold;
+    gap: 1rem;
+    font-weight: 550;
 }
 
 .dropdowns select {
-    padding: 0.5rem 1rem;
-}
-
-.button {
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  color: white;
-  background-color: rgb(176, 77, 64);
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-.button:hover {
-  background-color: rgb(132, 53, 43);
-  cursor: pointer;
-}
-
-.remove-button {
-  margin-top: 0.5rem;
-}
-
-#name {
-  font-size: 1.5rem;
+    padding: 0.75rem;
 }
 
 .video {
-    padding-inline: 1rem;
-    padding-block: 2rem;
-    height: auto;
     display: flex;
     justify-content: center;
+    padding: 2rem 0;
 }
 
-iframe {
-  width: 80vw;
-  aspect-ratio: 16/9;
-  border: none;
+.video iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
 }
 
 
-#randomBtn {
-  display: inline-block;
-  padding: 1rem;
-}
 
+
+
+
+
+/* 
+    Loading animation
+*/
 
 .lds-ring {
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
-  }
-  .lds-ring div {
+}
+
+.lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -167,22 +192,25 @@ iframe {
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
+}
+
+.lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
+}
+
+.lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
+}
+
+.lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
+}
+
+@keyframes lds-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
