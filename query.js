@@ -1,4 +1,6 @@
 const query = new URLSearchParams(window.location.search).get('name');
+document.title = `${query} - search results | ethanw.online`;
+document.querySelector('input[name="name"]').value = query;
 
 fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1`, options)
 .then(response => response.json())
@@ -6,6 +8,13 @@ fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=fa
 .catch(err => console.error(err));
 
 buildGrild = (data) => {
+  if (data.length === 0) {
+    const grid = document.querySelector('.grid');
+    const h1 = document.createElement('h1');
+    h1.innerText = "No results found";
+    grid.appendChild(h1);
+
+  } else {
     document.querySelector(".lds-ring").classList.remove(".lds-ring");
     const grid = document.querySelector('.grid');
     grid.innerHTML = '';
@@ -30,5 +39,6 @@ buildGrild = (data) => {
         div.appendChild(link);
         div.appendChild(title);
         grid.appendChild(div);
-    });
+    })
+  };
 }

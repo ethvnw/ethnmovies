@@ -11,8 +11,10 @@ fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, options)
 .then(response => {
     if (type === "movie") {
         nameBar.innerText += `${response.title} (${response.release_date.slice(0,4)})`;
+        document.title = `${response.title} | ethanw.online`;
     } else {
         nameBar.innerText += ` ${response.name}`;
+        document.title = `${response.name} - S${sea} Ep ${ep} | ethanw.online`;
     }
 })
 .catch(err => console.error(err));
