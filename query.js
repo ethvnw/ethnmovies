@@ -37,7 +37,7 @@ buildGrild = (data) => {
 
         link.appendChild(img);
         div.appendChild(link);
-        div.appendChild(title);
+        link.appendChild(title);
         grid.appendChild(div);
     })
   };

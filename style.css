@@ -162,12 +162,8 @@ button:hover, .button:hover {
 .video iframe {
     width: 100%;
     aspect-ratio: 16/9;
+    border: 0;
 }
-
-
-
-
-
 
 
 /* 
@@ -212,5 +208,50 @@ button:hover, .button:hover {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+/* mobile queries */
+@media screen and (max-width: 750px) {
+    body {
+        padding-inline: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill,100%);
+        gap: 1rem;
+    }
+
+    .grid div a{
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        background-color: var(--bg-colour-card);
+        border-radius: 3px;
+        padding: 0.5rem;
+    }
+
+    .grid img {
+        width: 10rem;
+    }
+
+    #current {
+        margin-bottom: 3rem;
+    }
+
+    .remove-button {
+        position: static;
+        margin-top: 0.5rem;
+    }
+
+    .dropdowns {
+        flex-direction: column;
+    }
+
+    .select-bars {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
     }
 }

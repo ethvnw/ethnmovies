@@ -43,6 +43,7 @@ getAllDetails = async () => {
 
 
 buildCurrentGrid = () => {
+    document.querySelector(".lds-ring").remove();
     const grid = document.querySelector('#current');
     grid.innerHTML = '';
 
@@ -69,7 +70,7 @@ buildCurrentGrid = () => {
 
         link.appendChild(img);
         div.appendChild(link);
-        div.appendChild(title);
+        link.appendChild(title);
         grid.appendChild(div);
         div.appendChild(remove);
     });
@@ -102,7 +103,7 @@ buildHistoryGrid = () => {
 
         link.appendChild(img);
         div.appendChild(link);
-        div.appendChild(title);
+        link.appendChild(title);
         grid.appendChild(div);
         div.appendChild(remove);
     });
