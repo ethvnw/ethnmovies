@@ -7,7 +7,7 @@ export function getTemplate({
 }): string {
   return `
   <!doctype html>
-  <html lang="en" data-theme="dark">
+  <html lang="en">
 
     <head>
       <meta charset="utf-8">
@@ -16,7 +16,7 @@ export function getTemplate({
       <meta name="description" content="This site is password protected.">
       <link rel="icon" type="image/x-icon" href="./favicon.png">
 
-      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 
       <style>
         body > main {
