@@ -36,15 +36,15 @@ export function getTemplate({
         }
 
         h2 { color: var(--color-h2); }
+
+
       </style>
     </head>
 
     <body>
       <main>
         <article>
-          <hgroup>
             <h1>Password</h1>
-          </hgroup>
           ${withError ? `<p class="error">Incorrect password, please try again.</p>` : ''}
           <form method="post" action="/cfp_login">
             <input type="hidden" name="redirect" value="${redirectPath}" />
