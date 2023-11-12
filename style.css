@@ -7,9 +7,12 @@
     --font-colour-main: hsl(0, 0%, 85%);
     --font-colour-light: hsl(0, 0%, 95%);
     --font-colour-dark: hsl(0, 0%, 10%);
+    --font-colour-footer: hsl(0, 0%, 50%);
 
-    --font-colour-accent: hsl(10, 55%, 45%);
-    --font-colour-accent-dark: hsl(10, 55%, 35%);
+    --accent-colour: hsl(10, 55%, 45%);
+    --accent-colour-dark: hsl(10, 55%, 35%);
+
+
 
     --input-bg-colour: hsl(0, 0%, 80%);
 }
@@ -19,6 +22,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--font-colour-main);
     padding-inline: 8rem;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 header {
@@ -32,7 +37,7 @@ a {
 }
 
 a:hover {
-    color: var(--font-colour-accent);
+    color: var(--accent-colour);
     text-decoration: underline;
 }
 
@@ -50,14 +55,14 @@ input {
 }
 
 button, .button {
-    background-color: var(--font-colour-accent);
+    background-color: var(--accent-colour);
     color: var(--font-colour-light);
     font-weight: 550;
 }
 
 button:hover, .button:hover {
     cursor: pointer;
-    background-color: var(--font-colour-accent-dark);
+    background-color: var(--accent-colour-dark);
     color: var(--font-colour-light);
     text-decoration: none;
 }
@@ -164,6 +169,14 @@ button:hover, .button:hover {
     width: 100%;
     aspect-ratio: 16/9;
     border: 0;
+}
+
+
+footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: var(--font-colour-footer);
+    font-size: 0.8rem;
 }
 
 
