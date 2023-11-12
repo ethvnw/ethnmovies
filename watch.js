@@ -110,4 +110,11 @@ player.src = `https://vidsrc.me/embed/${type}?tmdb=${id}&season=${sea}&episode=$
 player.allowFullscreen = true;
 video.appendChild(player);
 
-document.cookie = `${id}=${type},${sea},${ep}; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/`;
+
+var startTime = new Date().getTime();
+window.onbeforeunload = function() {
+    var endTime = new Date().getTime();
+    if (endTime - startTime > 300000) {
+        document.cookie = `${id}=${type},${sea},${ep}; expires=Thu, 18 Dec 2030 12:00:00 UTC; path=/`;
+    }
+};
