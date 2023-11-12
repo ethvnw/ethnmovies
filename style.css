@@ -160,6 +160,7 @@ button:hover, .button:hover {
 }
 
 .video iframe {
+    max-height: 80vh;
     width: 100%;
     aspect-ratio: 16/9;
     border: 0;
