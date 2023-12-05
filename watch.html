@@ -14,29 +14,31 @@
 
     <section class="searchbar">
         <form id="search" action="./query.html">
+            <span class="search-icon"></span>
             <input type="text" placeholder="Search for a movie or show" name="name" required>
-            <button class="submit" type="submit">Search</button>
             <a id="randomBtn" class="button">Random Movie</a>
         </form>
     </section>
    
     <h2 id="name"></h1>
     <section id="dropdowns" class="dropdowns">
-        <div class="select-bars">
-            <label for="season">Season</label>
-            <select name="season" id="season">  
-            </select>
+        <div class="select-bars controls-card">
+            <label for="season"><p>Season</p>
+                <select name="season" id="season"> </select>
+            </label>
         
-            <label for="episode">Episode</label>
-            <select name="episode" id="episode">
-            </select>
+            <label for="episode"><p>Episode</p>
+                <select name="episode" id="episode"> </select>
+            </label>
+
+            <a class="button" href="" id="watch">Go</a>
         </div>
 
-        <a class="button" href="" id="watch">Go</a>
+        <div class="next-btn">
+        </div>
     </section>
 
     <div class="video">
-
     </div>
 
     <footer>
@@ -45,11 +47,11 @@
     
     <script src="random.js"></script>
     <script src="watch.js"></script>
-    <script>
+    <!-- <script>
         var frames = document.getElementsByTagName('iframe');
         for (var frame of frames) {
-            frame.setAttribute("sandbox", "");
+            frame.setAttribute("sandbox", "allow-scripts");
         }
-    </script>
+    </script> -->
 </body>
 </html>

@@ -24,6 +24,10 @@ async function getDetails(id, type, season, episode) {
 }
 
 getAllDetails = async () => {
+    if (cookies[0] === "") {
+        document.querySelector(".lds-ring").remove();
+        return;
+    }
     for (var cookie of cookies) {
         cookie = cookie.trim();
         var attributes = cookie.split('=');

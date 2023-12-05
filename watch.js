@@ -62,21 +62,22 @@ updateDropdown = () => {
 };
 
 updateNextEp = () => {
-    var dropdowns = document.getElementById("dropdowns");
-    if (ep < seasonDetails.seasons[sea].episode_count && document.getElementsByClassName("nextBtn").length === 0) {
+    var section = document.querySelector(".next-btn");
+    if (document.getElementsByClassName("nextBtn").length === 0) {
         var next = document.createElement("a");
         next.classList.add("button", "nextBtn");
+    }
+
+    if (ep < seasonDetails.seasons[sea].episode_count)  {
         next.href = `./watch.html?id=${id}&type=${type}&sea=${sea}&ep=${parseInt(ep) + 1}`;
-        next.innerText = "Next Episode";
-        dropdowns.appendChild(next);
-        
-    } else if (sea < seasonDetails.number_of_seasons && document.getElementsByClassName("nextBtn").length === 0) {
-        var next = document.createElement("a");
-        next.classList.add("button", "nextBtn");
+        next.innerText = "Next Episode";    
+
+    } else if (sea < seasonDetails.number_of_seasons) {
         next.href = `./watch.html?id=${id}&type=${type}&sea=${parseInt(sea) + 1}&ep=1`;
         next.innerText = "Next Season";
-        dropdowns.appendChild(next);
     };
+
+    section.appendChild(next);
 };
 
 updateEpLink = () => {
@@ -106,10 +107,17 @@ episodeDrop.addEventListener("change", updateEpLink);
 
 const video = document.querySelector('.video');
 const player = document.createElement('iframe');
-player.src = `https://vidsrc.me/embed/${type}?tmdb=${id}&season=${sea}&episode=${ep}`;
+player.src = `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1&s=${sea}&e=${ep}`
 player.allowFullscreen = true;
 video.appendChild(player);
 
+// const oldPlayer = document.createElement('a');
+// oldPlayer.innerHTML = "Switch to old player";
+// video.appendChild(oldPlayer);
+// oldPlayer.onclick = () => {
+//     player.src = `https://vidsrc.me/embed/${type}?tmdb=${id}&season=${sea}&episode=${ep}`;
+//     oldPlayer.style.display = "none";
+// };
 
 var startTime = new Date().getTime();
 window.onbeforeunload = function() {

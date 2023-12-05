@@ -2,7 +2,7 @@
 
 :root {
     --bg-colour: hsl(0, 0%, 10%);
-    --bg-colour-card: hsl(0, 0%, 12%);
+    --bg-colour-card: hsl(0, 0%, 13%);
 
     --font-colour-main: hsl(0, 0%, 85%);
     --font-colour-light: hsl(0, 0%, 95%);
@@ -39,13 +39,14 @@ a {
 a:hover {
     color: var(--accent-colour);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 input, button, .button {
     background-color: var(--input-bg-colour);
     padding: 0.8rem;
     border: 0;
-    border-radius: 3px;
+    border-radius: 0.4rem;
     margin: 0.2rem;
     color: var(--font-colour-main);
 }
@@ -78,6 +79,7 @@ button:hover, .button:hover {
 
 #search {
     display: flex;
+    position: relative;
     width: 100%;
     text-align: center;
 }
@@ -87,11 +89,25 @@ button:hover, .button:hover {
 }
 
 #search input {
-    width: 85%
+    width: 88%
 }
 
-#letterboxd-search input {
-    width: 20rem;
+.search-icon {
+    background: 
+        url("https://cdn-icons-png.flaticon.com/512/18/18633.png")
+        no-repeat
+        center
+        /100%;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 1.4rem;
+    left: 1rem;
+}
+
+#search input[type="text"] {
+    padding-left: 3rem;
+    background-color: var(--input-bg-colour);
 }
 
 #current, #history {
@@ -156,11 +172,32 @@ button:hover, .button:hover {
 
 .dropdowns select {
     padding: 0.75rem;
+    border-radius: 0.4rem;
+}
+
+.controls-card {
+    background-color: var(--bg-colour-card);
+    border-radius: 0.4rem;
+    padding: 1rem;
+
+}
+
+.select-bars {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.select-bars p {
+    margin: 0 0 0.8rem;
 }
 
 .video {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
     padding: 2rem 0;
 }
 
@@ -171,6 +208,9 @@ button:hover, .button:hover {
     border: 0;
 }
 
+.video a {
+    font-size: 0.8rem;
+}
 
 footer {
     text-align: center;
@@ -232,10 +272,6 @@ footer {
         padding-inline: 2rem;
     }
 
-    #search {
-        display: block;
-    }
-
     .grid {
         grid-template-columns: repeat(auto-fill,100%);
         gap: 1rem;
@@ -265,11 +301,6 @@ footer {
 
     .dropdowns {
         flex-direction: column;
-    }
-
-    .select-bars {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
+        gap: 2rem;
     }
 }
