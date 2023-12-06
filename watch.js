@@ -107,7 +107,7 @@ episodeDrop.addEventListener("change", updateEpLink);
 
 const video = document.querySelector('.video');
 const player = document.createElement('iframe');
-player.src = `https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1&s=${sea}&e=${ep}`
+player.src = `https://vidsrc.me/embed/${type}?tmdb=${id}&season=${sea}&episode=${ep}`
 player.allowFullscreen = true;
 video.appendChild(player);
 
